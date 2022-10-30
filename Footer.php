@@ -50,6 +50,7 @@
               </div>
               <button class="btn btn-primary btn-icon btn-sm" type="submit" id="submit" name="submit" value="submit"><i class="fi-send"></i></button>
             </form>
+            <img class="" src="img/logo/payment.png" width="200" alt="Mobile app">
             <!-- <img class="" src="img/logo/logo.png" width="200" alt="Mobile app"> -->
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 mb-2 mb-sm-4">
