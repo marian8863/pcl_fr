@@ -79,7 +79,7 @@
               </div>
               <button class="btn btn-primary btn-icon btn-sm" type="submit" id="submit" name="submit" value="submit"><i class="fi-send"></i></button>
             </form> -->
-            <img class="" src="img/logo/logo1.png" width="200" alt="Mobile app">
+            <img class="" src="img/logo/logo2.png" width="200" alt="Mobile app">
           </div>
          
         </div>
