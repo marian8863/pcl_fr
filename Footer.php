@@ -50,7 +50,8 @@
               </div>
               <button class="btn btn-primary btn-icon btn-sm" type="submit" id="submit" name="submit" value="submit"><i class="fi-send"></i></button>
             </form>
-            <img class="" src="img/logo/payment.png" width="200" alt="Mobile app">
+            <br>
+            <img class="" src="img/logo/payment1.png" width="230" alt="payment">
             <!-- <img class="" src="img/logo/logo.png" width="200" alt="Mobile app"> -->
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 mb-2 mb-sm-4">
@@ -65,8 +66,8 @@
               <!-- <li><a class="nav-link-light" href="#">Subscribe</a></li> -->
             </ul>
           </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6 col-md-3 mb-2 mb-sm-4"><a class="d-flex align-items-center text-decoration-none mb-2"  href="tel:+33 660 763 235"><i class="fi-device-mobile me-2"></i><span class="text-light"> +33 660 763 235</span></a>
-            <a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:pariscablimo@gamil.com"><i class="fi-mail me-2"></i><span class="text-light">pariscablimo@gamil.com</span></a>
+          <div class="col-xl-3 col-lg-3 col-sm-6 col-md-3 mb-2 mb-sm-4"><a class="d-flex align-items-center text-decoration-none mb-2"  href="tel:+33 660 763 235"><i class="fi-device-mobile me-2" style="color:white"></i><span class="text-light"> +33 660 763 235</span></a>
+            <a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:pariscablimo@gamil.com"><i class="fi-mail me-2" style="color:white"></i><span class="text-light">pariscablimo@gamil.com</span></a>
             <hr width="190">
             <div class="d-flex flex-wrap pt-4"><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-twitter"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-telegram"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="#"><i class="fi-messenger"></i></a></div>
           </div>

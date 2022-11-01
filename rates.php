@@ -8,530 +8,236 @@ include_once("Menu.php");
 
 
 ?>
+<style>
+td:hover {
+  /* background-color: #000000; */
+}
+/* a {
+  
+} */
+
+.table_eff,a {
+        color: #000000;
+        -webkit-transition: color 1s; /* For Safari 3.0 to 6.0 */
+        transition: color 1s; /* For modern browsers */
+        text-decoration: none !important;
+    }
+.table_eff a:hover {
+    color: #ffffff;
+    background-color: #fd5631;
+
+}
+</style>
 <!--END DON'T CHANGE THE ORDER-->
 
-        <!-- Page content-->
-        <section class="container pt-5 mt-5">
-            <nav class="mb-3 pt-md-2" aria-label="Breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="http://pariscablimousine.fr/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Booking Rates</li>
-              </ol>
-            </nav>
-            <!-- Title-->
-            <div class="d-sm-flex align-items-center justify-content-between pb-3 pb-sm-4">
-              <h1 class="h2 mb-sm-0">Booking Rates</h1>
-            </div>
-
-            <!-- Catalog grid-->
-            <div class="row g-4 py-4">
-                <!-- Item-->
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=1  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
+    <section class="bg-dark py-5">
+        <div class="container pt-5 pb-5">
+          <!-- Breadcrumbs + page title-->
+          <nav class="mb-4 pb-lg-3" aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-light">
+              <li class="breadcrumb-item"><a href="https://pariscablimousine.fr/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Booking Rates</li>
+            </ol>
+          </nav>
+          <!-- Page title-->
+          <div class="mb-lg-5 mx-auto text-center" style="max-width: 856px;">
+            <h1 class="text-light mb-4 pb-3">BOOKING RATES</h1>
+            <!-- Search form-->
+            <!-- <form class="form-group form-group-lg form-group-light rounded-pill">
+              <input class="form-control" type="text" placeholder="What are you looking for?">
+              <button class="btn btn-lg btn-primary rounded-pill px-sm-4 px-3" type="submit"><i class="fi-search me-sm-2"></i><span class="d-sm-inline d-none">Search</span></button>
+            </form> -->
+          </div>
+        </div>
+    </section>
+      <!-- Page content-->
+    <section class="position-relative bg-white rounded-xxl-4 mb-5 pt-md-3 pb-lg-5 zindex-5" style="margin-top: -30px;">
+        <div class="container pt-5">
+          <div class="row">
+            <!-- Sidebar-->
+            <aside class="col-lg-3 col-md-4 d-md-block d-none position-relative">
+              <nav class="border-start sticky-top" style="top: 116px;">
+                <ul class="nav flex-column">
+                  <li class="nav-item"><a class="nav-link py-1 px-4 fw-normal" href="#MultivanVolkswagenT6" data-scroll>Multivan Volkswagen T6</a></li>
+                  <li class="nav-item"><a class="nav-link py-1 px-4 fw-normal" href="#mvtPackage" data-scroll>Multivan Volkswagen T6 Package</a></li>
+                  <li class="nav-item"><a class="nav-link py-1 px-4 fw-normal" href="#Eclass" data-scroll>E class</a></li>
+                  <li class="nav-item"><a class="nav-link py-1 px-4 fw-normal" href="#EclassPackage" data-scroll>E class Package</a></li>
+                </ul>
+              </nav>
+            </aside>
+            <div class="col-md-8 offset-lg-1">
+              <div class="mb-md-5 mb-4 pb-lg-2" id="MultivanVolkswagenT6">
+                <h2 class="h4 mb-md-4">Multivan Volkswagen T6</h2>
+                <span class="d-block opacity-70 mb-2 mb-sm-0"> These rates cover only a one way transfer. For your return service.<strong> <br> Please make a New Booking.</strong></span> <br>
+                <!-- Multivan Volkswagen T6-->
+                <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr style="background-color:#fd5631;color:white;">
+                        <th>From</th>
+                        <th>Destination</th>
+                        <th>1-2 P.</th>
+                        <th>3 P.</th>
+                        <th>4 P.</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql="select sp.p_place,sp.d_place,rp.1_2P,rp.3P,rp.4P from select_places sp , rates_payment rp where sp.p_id=rp.p_id";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result) > 0) {
                         
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=1";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=1  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
+                        while($row = mysqli_fetch_assoc($result)) { 
                         ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
+                    <tr>
+                        <th style="background-color:#dadad7;"> <?= $row["p_place"]?></th>
+                        <th style="background-color:#dadad7;;"> <?= $row["d_place"]?></th>
+                        <td><a class="table_eff" href="">€ <?= $row["1_2P"]?></a> </td>
+                        <td><a href="">€ <?= $row["3P"]?></a> </td>
+                        <td><a href="">€ <?= $row["4P"]?></a> </td>
+                    </tr>
+                    <?php }} ?>
+                    </tbody>
+                </table>
                 </div>
+              </div>
+              <div class="mb-md-5 mb-4 pb-lg-2" id="mvtPackage">
+                <h2 class="h4 mb-md-4">Multivan Volkswagen T6 Package</h2>
+                <!-- Resume creation and editing accordion-->       
+                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong></span> <br>
 
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=2  group by p_place,d_place";
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr style="background-color:#fd5631;color:white;">
+                            <th></th>
+                            <th>1-4 P.</th>
+                            <th>4-6 P.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql="select p1t.pa_name,p1tr.1_4P,p1tr.4_6P from package_1_t6 p1t , package_1_t6_rate p1tr where p1t.pa_id=p1tr.pa_id";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=2";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=2  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                        ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href="">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=3  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=3";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=3  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                        ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href="booking_form.php?p_id=3&p_place=<?= $row["p_place"];?>&d_place=<?= $row["d_place"];?>"><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=4  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=4";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=4  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                        ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=5  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=5";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=5  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                        ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-                            <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=6  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link"><?= $row["p_place"];?> << ----- >> <?= $row["d_place"];?></a></h3>
-                            <?php }} ?>
-                            <?php                    
-                            $sql="select  pa.p_num,r.amount from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=6";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                            ?>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> <?= $row["p_num"];?> Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i><?= $row["amount"];?>€</div>
-                                </div>
-                            </div>
-                            <?php }} ?>
-                        </div>
-                        <?php                    
-                            $sql=" select sp.p_place,sp.d_place from select_places sp , rates r, passenger pa where sp.p_id=r.p_id and r.rates_id=pa.rates_id and sp.p_id=6  group by p_place,d_place";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                        
-                            while($row = mysqli_fetch_assoc($result)) { 
-                        
-                        ?>
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                        <?php }} ?>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">Disposal 3 Hours pack within Paris</a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> 1 - 4 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>220€</div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3" ><i class="fi-users"></i> 4 - 6 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>270€</div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between pb-1"  ><span class="fs-sm me-3" style="color:red"><i class="fi-alarm"></i> Extra Hours</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>65€</div>
-                                </div>
-                            </div>
                             
-                        </div>
+                            while($row = mysqli_fetch_assoc($result)) { 
+                            ?>
+                        <tr>
+                            <th style="background-color:#dadad7;"> <?= $row["pa_name"]?></th>
+                            <td><a class="table_data" href="">€ <?= $row["1_4P"]?></a> </td>
+                            <td><a class="table_data" href="">€ <?= $row["4_6P"]?></a> </td>
 
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
+                        </tr>
+                        <?php }} ?>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <!-- <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4> -->
+                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <br> <strong>(150km)</strong> includes </span> <br>
 
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">Full day pack 8hours</a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> Maximum 6 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>640€</div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between pb-1"  ><span class="fs-sm me-3" style="color:red"><i class="fi-alarm"></i> Extra Hours</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>65€</div>
-                                </div>
-                            </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr style="background-color:#fd5631;color:white;">
+                            <th></th>
+                            <th>6 P.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql="select p2t.pa_name2,p2tr.6P from package_2_t6 p2t , package_2_t6_rate p2tr where p2t.pa_id2=p2tr.pa_id2";
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result) > 0) {
                             
-                        </div>
+                            while($row = mysqli_fetch_assoc($result)) { 
+                            ?>
+                        <tr>
+                            <th style="background-color:#dadad7;"> <?= $row["pa_name2"]?></th>
+                            <td><a class="table_data" href="">€ <?= $row["6P"]?></a> </td>
 
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
+                        </tr>
+                        <?php }} ?>
+                        </tbody>
+                    </table>
                 </div>
+              </div>
 
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">E class</h4>
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">PARIS AIRPORT << --- >>PARIS </a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> 3 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>120€</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
+              <div class="mb-md-5 mb-4 pb-lg-2" id="Eclass">
+                <h2 class="h4 mb-md-4">E class</h2>
+                <!-- E class -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr style="background-color:#fd5631;color:white;">
+                            <th>From</th>
+                            <th>Destination</th>
+                            <th>3 P.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql="select spe.p_place,spe.d_place,rpe.3P from select_places_eclass spe , rates_payment_eclass rpe where spe.p_id=rpe.p_id";
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                            
+                            while($row = mysqli_fetch_assoc($result)) { 
+                            ?>
+                        <tr>
+                            <th style="background-color:#dadad7;"> <?= $row["p_place"]?></th>
+                            <th style="background-color:#dadad7;;"> <?= $row["d_place"]?></th>
+                            <td><a class="table_data" href="">€ <?= $row["3P"]?></a> </td>
+                        </tr>
+                        <?php }} ?>
+                        </tbody>
+                    </table>
                 </div>
+              </div>
 
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">E class</h4>
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">PARIS AIRPORT << --- >> DISNEYLAND </a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> 3 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>130€</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
+              <div class="mb-md-5 mb-4 pb-lg-2" id="EclassPackage">
+                <h2 class="h4 mb-md-4">E class Package</h2>
+                <!-- Job application accordion-->
+                <div class="table-responsive">
+                    <table class="table">
+                        <!-- <thead class="thead-dark">
+                        <tr style="background-color:#fd5631;color:white;">
+                            <th>From</th>
+                            <th>Destination</th>
+                            <th>3 P.</th>
+                        </tr>
+                        </thead> -->
+                        <tbody>
+                            <?php
+                            $sql="select p1ec.pa_name1,p1er.p1er_rate from package_1_ec p1ec,package_1_ec_rate p1er where p1ec.pa_id1=p1er.pa_id1";
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                            
+                            while($row = mysqli_fetch_assoc($result)) { 
+                            ?>
+                        <tr>
+                        <td style="background-color:#dadad7;"><?= $row["pa_name1"]?></td>
+                        <td><a class="table_data" href="">€ <?= $row["p1er_rate"]?></a> </td>
+                        </tr>
+                        <?php }} ?>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">E class</h4>
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">PARIS AIRPORT << --- >> ORLY </a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> 3 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>135€</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">E class</h4>
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">BEAUVAIS AIRPORT << --- >> PARIS </a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3"><i class="fi-users"></i> 3 Passenger</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>200€</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <!-- <div class="tns-carousel-wrapper card-img-top card-img-hover"><a class="img-overlay" href=""></a>
-                            <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success mb-1">Verified</span><span class="d-table badge bg-info">New</span></div>
-                            <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                            <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                            </div>
-                            <div class="tns-carousel-inner"><img src="img/real-estate/catalog/paris.png" alt="Image"></div>
-                        </div> -->
-                        <div class="card-body position-relative pb-3">
-                            <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">E class</h4>
-
-                            <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link">DISPOSAL LIMOUSINE </a></h3>
-  
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3">4H WITHIN PARIS 120km</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>220€</div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-muted me-3">8H WITHIN PARIS 120km</span>
-                                <div class="form-check form-check-dark">
-                                    <div class="fw-bold"><i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>550€</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><a class="nav-link stretched-link" href=""><span class="d-inline-block mx-1 px-2 fs-sm">TAKE ME THERE <i class="fi-chevron-right ms-1 mt-n1 fs-lg text-muted"></i></span></a></div>
-                    </div>
-                </div>
-
-   
+              </div>
             </div>
-            <!-- Pagination-->
-            <nav class="border-top pb-md-4 pt-4 mt-2" aria-label="Pagination">
-              <ul class="pagination mb-1">
-                <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 5</span></li>
-                <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">2</a></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-                <li class="page-item d-none d-sm-block">...</li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><i class="fi-chevron-right"></i></a></li>
-              </ul>
-            </nav>
-        </section>
+          </div>
+        </div>
+    </section>
+      <!-- Contact Us CTA-->
+    <section class="container mb-5 pb-lg-5">
+        <div class="py-md-4 py-5 bg-secondary rounded-3">
+          <div class="col-sm-10 col-11 d-flex flex-md-row flex-column align-items-center justify-content-between mx-auto px-0">
+            <div class="order-md-1 order-2 text-md-start text-center" style="max-width: 524px;">
+              <h2 class="mb-4 pb-md-3">You can contact us and ask your questions directly</h2>
+              <!-- <a class="btn btn-lg btn-primary rounded-pill w-sm-auto w-100" href="job-board-contacts.html">Contact us</a> -->
+            </div><img class="order-md-2 order-1 ms-md-4" src="img/logo/payment1.png" width="400"  alt="payment">
+          </div>
+        </div>
+    </section>
 
 
 
