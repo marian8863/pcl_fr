@@ -245,7 +245,7 @@ $("input#c_message").focus();
 return false;
 }
 
-// ajax
+// contact_process_data
 $.ajax({
 type:"POST",
 url: "contact_process_data",
@@ -261,6 +261,117 @@ return false;
 </script>
 
 
+<script type="text/javascript">
+$(document).ready(function($){
+// hide messages 
+$("#error").hide();
+$("#show_message").hide();
+// on submit...
+$('#booking-form').submit(function(e){
+e.preventDefault();
+$("#error").hide();
+
+// Pick Place required
+var place_d = $("input#place_d").val();
+if(place_d == ""){
+$("#error").fadeIn().text("Pick Place required");
+$("input#place_d").focus();
+return false;
+}
+
+// Drop Place required
+var d_place = $("input#d_place").val();
+if(d_place == ""){
+$("#error").fadeIn().text("Drop Place required");
+$("input#d_place").focus();
+return false;
+}
+
+// No Of Passenger required
+var nopassenger = $("input#nopassenger").val();
+if(nopassenger == ""){
+$("#error").fadeIn().text("No Of Passenger required");
+$("input#nopassenger").focus();
+return false;
+}
+
+// Amount required
+var amount = $("input#amount").val();
+if(amount == ""){
+$("#error").fadeIn().text("Amount required");
+$("input#amount").focus();
+return false;
+}
+
+// Pick Address required
+var adr = $("input#adr").val();
+if(adr == ""){
+$("#error").fadeIn().text("Pick Address required");
+$("input#adr").focus();
+return false;
+}
+
+// cus_name required
+var cus_name = $("input#cus_name").val();
+if(cus_name == ""){
+$("#error").fadeIn().text("cus_name required");
+$("input#cus_name").focus();
+return false;
+}
+
+// ph_num required
+var ph_num = $("input#ph_num").val();
+if(ph_num == ""){
+$("#error").fadeIn().text("ph_num  required");
+$("input#ph_num").focus();
+return false;
+}
+
+// e_add required
+var e_add = $("input#e_add").val();
+if(e_add == ""){
+$("#error").fadeIn().text("e_add  required");
+$("input#e_add").focus();
+return false;
+}
+
+// p_date required
+var p_date = $("input#p_date").val();
+if(p_date == ""){
+$("#error").fadeIn().text("p_date  required");
+$("input#p_date").focus();
+return false;
+}
+
+// p_time required
+var p_time = $("input#p_time").val();
+if(p_time == ""){
+$("#error").fadeIn().text("p_time  required");
+$("input#p_time").focus();
+return false;
+}
+
+// des required
+var des = $("input#des").val();
+if(des == ""){
+$("#error").fadeIn().text("des  required");
+$("input#des").focus();
+return false;
+}
+// contact_process_data
+$.ajax({
+type:"POST",
+url: "booking_process_data",
+data: $(this).serialize(), // get all form field value in serialize form
+success: function(){
+$("#show_message").fadeIn();
+// $("#ajax-form").fadeOut();
+}
+});
+});  
+return false;
+});
+</script>
  
 </body>
 

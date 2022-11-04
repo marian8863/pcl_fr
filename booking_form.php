@@ -1,15 +1,17 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Home | SLGTI";
+$title = "Home | Booking Details";
 
 include_once("Head.php");
 include_once("Menu.php");
 
-$pi=$pp=$dp=$cid=null;
-if(isset($_GET['p_id'])&&isset($_GET['p_place'])&&isset($_GET['d_place'])){
-    $pi=$_GET['p_id'];
-    $pp=$_GET['p_place'];
-    $dp=$_GET['d_place'];
+$gAmount=$pp=$dp=$gpa=$p_place=null;
+if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_place'])&&isset($_GET['get_pa'])){
+    $gAmount=$_GET['get_amount'];
+    $pp=$_GET['get_p_place'];
+    $dp=$_GET['get_d_place'];
+    $gpa=$_GET['get_pa'];
+
 
 }
 ?>
@@ -104,7 +106,7 @@ if(isset($_GET['p_id'])&&isset($_GET['p_place'])&&isset($_GET['d_place'])){
                 <nav class="mb-3 pt-md-3" aria-label="Breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="real-estate-home-v1.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add property</li>
+                    <li class="breadcrumb-item active" aria-current="page">Booking Details</li>
                 </ol>
                 </nav>
                 <!-- Title-->
@@ -115,344 +117,138 @@ if(isset($_GET['p_id'])&&isset($_GET['p_place'])&&isset($_GET['d_place'])){
                     <div class="progress-bar bg-warning" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 </div>
-                <form method="post">
+
+                <form class="needs-validation" novalidate action="javascript:void(0)" method="post" id="booking-form">
 
                 <!-- Basic info-->
-                <section class="card card-light card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
-                  <h2 class="h4 mb-4 text-white"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2 "></i>Addresses</h2>
+                <section class="card card-dark card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
+                  <h2 class="h4 mb-4 text-dark"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2 "></i>Select Details</h2>
                   <!-- <div class="mb-3">
                       <label class="form-label" for="ap-title">Title <span class="text-danger">*</span></label>
                       <input class="form-control" type="text" id="ap-title" placeholder="Title for your property" value="Pine Apartments" required><span class="form-text">48 characters left</span>
                   </div> -->
                   <div class="row">
-                      <div class="col-sm-6 mb-3">
-                      <label class="form-label text-white" for="ap-category">Pickup City <span class="text-danger">*</span></label>
-                      <select class="form-select" id="ap-category" name="rates_id" onchange="showPlace(this.value)" required>
-                      <option value="null" selected disabled >---- Select the Pickup City ---- </option>
+                    <div class="col-sm-6 mb-3">
+                        <label class="form-label text-dark" for="ap-type "> Pick Place <span class="text-danger">*</span></label>
+                        <select class="form-select" id="place_d" name="place_d"  redyonly>
+                          <option value="null" selected disabled >---- Select the Pick Place ---- </option>
                           <?php
-                          $sql="select pa.rates_id as rates_id ,pa.p_num as p_num from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and  r.rates_id=pa.rates_id and sp.p_id=$pi";
+                          $sql="SELECT * FROM `select_places`  group by p_place";
                           $result = mysqli_query($con,$sql);
                           if (mysqli_num_rows($result) > 0 ) {
                           while($row=mysqli_fetch_assoc($result)){
-                              echo '<option  value="'.$row["rates_id"].'" required';
-                              if($row["rates_id"]== $cid) echo ' selected';
-                              echo '>'.$row["p_num"].'</option>';
+                              echo '<option  value="'.$row["p_place"].'" required';
+                              if($row["p_place"]== $pp) echo ' selected';
+                              echo '>'.$row["p_place"].'</option>';
                           }}   
                           ?>
-                      </select>
-                      </div>
-                      <div class="col-sm-6 mb-3">
-                      <label class="form-label text-white" for="ap-type "> Pickup Place <span class="text-danger">*</span></label>
-                      <select class="form-select" id="place" name="p_id"  required>
-
-                      </select>
-                      </div>
-
-                      <div class="col-sm-6 mb-3">
-                      <label class="form-label text-white" for="ap-category">Drop City <span class="text-danger">*</span></label>
-                      <select class="form-select" id="ap-category" name="dc_id" onchange="showPlace_drop(this.value)" required>
-                      <option value="null" selected disabled >---- Select the Drop City ---- </option>
+                        </select>
+                    </div> 
+                    <div class="col-sm-6 mb-3">
+                        <label class="form-label text-dark" for="ap-type "> Drop Place <span class="text-danger">*</span></label>
+                        <select class="form-select" id="d_place" name="d_place"  redyonly>
+                          <option value="null" selected disabled >---- Select the Pick Place ---- </option>
                           <?php
-                          $sql="select pa.rates_id as rates_id ,pa.p_num as p_num from select_places sp , rates r,passenger pa where sp.p_id=r.p_id and  r.rates_id=pa.rates_id and sp.p_id=$pi";
+                          $sql="SELECT * FROM `select_places`  group by d_place";
                           $result = mysqli_query($con,$sql);
                           if (mysqli_num_rows($result) > 0 ) {
                           while($row=mysqli_fetch_assoc($result)){
-                              echo '<option  value="'.$row["c_id"].'" required';
-                              if($row["c_id"]== $cid) echo ' selected';
-                              echo '>'.$row["c_name"].'</option>';
+                              echo '<option  value="'.$row["d_place"].'" required';
+                              if($row["d_place"]== $dp) echo ' selected';
+                              echo '>'.$row["d_place"].'</option>';
                           }}   
                           ?>
-                      </select>
-                      </div>
-                      <div class="col-sm-6 mb-3">
-                      <label class="form-label text-white" for="ap-type "> Drop Place <span class="text-danger">*</span></label>
-                      <select class="form-select" id="place_d" name="dp_id"  required>
+                        </select>
+                    </div> 
 
-                      </select>
-                      </div> 
-                      <div class=" col-sm-6 mb-3">
-                          <label class="form-label text-white" for="ap-address">Pickup Address <span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="pickup_address"  id="ap-address" value="" required>
-                      </div>
-                      <div class=" col-sm-6 mb-3">
-                          <label class="form-label text-white" for="ap-address"> Drop Address <span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="drop_address" id="ap-address" value="" required>
-                      </div>
+                    <div class=" col-sm-6 mb-3">
+                          <label class="form-label text-dark" for="ap-address"> No Of Passenger <span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="<?= $gpa; ?>" readonly>
+                    </div>
+
+                    <div class=" col-sm-6 mb-3">
+                          <label class="form-label text-dark" for="ap-address">Amount<span class="text-danger">*</span></label>
+                          <input class="form-control" type="text" name="amount"  id="amount" value="<?=  $gAmount; ?>" readonly>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                      <label class="form-label text-dark" for="sc-description">Pick Address <span class="text-danger">*</span></label>
+                      <textarea class="form-control" id="adr" name="adr" rows="5" placeholder="Type your address" required></textarea><span class="form-text text-light opacity-50">Write your address....</span>
+                      <div class="invalid-feedback">Please, enter your Pick Address</div>
+                    </div>
                   </div>
                 </section>
 
-                
-                <section class="card card-light card-body border-0 shadow-sm p-4 mb-4" >
-                  <div class="alert alert-warning bg-faded-warning border-warning mb-4" role="alert">
-                    <div class="d-flex"><i class="fi-alert-circle me-2 me-sm-3"></i>
-                      <p class="fs-sm mb-1">Select Your vehicle Package to Checked<br>Your Want to baby Seat Select to the box Or Put zero (0)<p>
-                    </div>
-                  </div>
-                    <div class="row">
-                        <div class="col-sm-4 mb-3">
-                            <div class="card shadow-sm card-hover border-0 h-100 ">
-                            <div class="tns-carousel-wrapper card-img-top card-img-hover">
-                                <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-info">New</span></div>
-                                <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                                
-
-                                <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                                </div>
-                                <div class="tns-carousel-inner"><img src="img/car-finder/catalog/mv/mv1.png" alt="Image"><img src="img/car-finder/catalog/mv/mv2.png" alt="Image"></div>
-                            </div>
-                            <div class="card-body position-relative pb-3">
-                                <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">Fully Aircondition</h4>
-                                <h3 class="h6 mb-2 fs-base">Multivan Volkswagen T6</h3>
-                                <p class="mb-2 fs-sm text-muted">On Board Wi-Fi, Bottle Water, Music System</p>
-                                <div class="fw-bold" style="color:black"><input class="form-check-input" type="radio" name="select_package" value="pack1"  id="p1" onclick="EnableDisableTB()" required> Select Package
-                                <h4 class="mb-1 fs-xs fw-normal text-grey">No. of baby seat</h4>
-                                <input class="form-control" type="number" id="carpack1" name="carpackage1" disabled="disabled" max="5" min="0" required></div>
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">7<i class="fi-users ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">3<i class="fi-briefcase ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm">1<i class="fi-car ms-1 mt-n1 fs-lg text-muted"></i></span></div>
-                            </div>                                 
-                        </div>
-
-                        <div class="col-sm-4 mb-3">
-                            <div class="card shadow-sm card-hover border-0 h-100 ">
-                            <div class="tns-carousel-wrapper card-img-top card-img-hover">
-                                <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-info">New</span></div>
-                                <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                                
-
-                                <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                                </div>
-                                <div class="tns-carousel-inner"><img src="img/car-finder/catalog/mv/mv1.png" alt="Image"><img src="img/car-finder/catalog/mv/mv2.png" alt="Image"></div>
-                            </div>
-                            <div class="card-body position-relative pb-3">
-                                <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">Fully Aircondition</h4>
-                                <h3 class="h6 mb-2 fs-base">Mercedes Benz E class</h3>
-                                <p class="mb-2 fs-sm text-muted">On Board Wi-Fi, Bottle Water, Music System</p>
-                                <div class="fw-bold" style="color:black"><input class="form-check-input" type="radio" name="select_package" value="pack1"  id="p1" onclick="EnableDisableTB()" required> Select Package
-                                <h4 class="mb-1 fs-xs fw-normal text-grey">No. of baby seat</h4>
-                                <input class="form-control" type="number" id="carpack1" name="carpackage1" disabled="disabled" max="5" min="0" required></div>
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">7<i class="fi-users ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">3<i class="fi-briefcase ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm">1<i class="fi-car ms-1 mt-n1 fs-lg text-muted"></i></span></div>
-                            </div>                                 
-                        </div>
-
-                        <div class="col-sm-4 mb-3">
-                            <div class="card shadow-sm card-hover border-0 h-100 ">
-                            <div class="tns-carousel-wrapper card-img-top card-img-hover">
-                                <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-info">New</span></div>
-                                <div class="content-overlay end-0 top-0 pt-3 pe-3">
-                                
-
-                                <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                                </div>
-                                <div class="tns-carousel-inner"><img src="img/car-finder/catalog/mv/mv1.png" alt="Image"><img src="img/car-finder/catalog/mv/mv2.png" alt="Image"></div>
-                            </div>
-                            <div class="card-body position-relative pb-3">
-                                <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">Fully Aircondition</h4>
-                                <h3 class="h6 mb-2 fs-base">Mercedes Benz S class</h3>
-                                <p class="mb-2 fs-sm text-muted">On Board Wi-Fi, Bottle Water, Music System</p>
-                                <div class="fw-bold" style="color:black"><input class="form-check-input" type="radio" name="select_package" value="pack1"  id="p1" onclick="EnableDisableTB()" required> Select Package
-                                <h4 class="mb-1 fs-xs fw-normal text-grey">No. of baby seat</h4>
-                                <input class="form-control" type="number" id="carpack1" name="carpackage1" disabled="disabled" max="5" min="0" required></div>
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap"><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">7<i class="fi-users ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm" style="color:gray">3<i class="fi-briefcase ms-1 mt-n1 fs-lg text-muted"></i></span><span class="d-inline-block mx-1 px-2 fs-sm">1<i class="fi-car ms-1 mt-n1 fs-lg text-muted"></i></span></div>
-                            </div>                                 
-                        </div>
-
-                        
-                    </div>
-                </section>
+ 
 
                 <!-- Location-->
-                <section class="card card-body card-light  border-0 shadow-sm p-4 mb-4" id="location">
-                    <h2 class="h4 mb-4 text-white"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Personal Details</h2>
+                <section class="card card-body card-dark  border-0 shadow-sm p-4 mb-4" id="location">
+                    <h2 class="h4 mb-4 text-dark"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Personal Details</h2>
                 
                     <div class="row">
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label text-white" for="ap-address">Your Name <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="cus_name" id="ap-address" value="" placeholder="Eg:- Suman" required>
+                            <label class="form-label text-dark" for="ap-address">Your Name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="cus_name" id="cus_name" value="" placeholder="Eg:- Suman" required>
+                            <div class="invalid-feedback">Please, enter your Name</div>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label text-white" for="ap-address">Mobile Number <span class="text-danger">*</span></label>
-                            <input class="form-control" type="number" name="ph_num" id="ap-address" value="" placeholder="Eg:- 00331456785" required>
+                            <label class="form-label text-dark" for="ap-address">Mobile Number <span class="text-danger">*</span></label>
+                            <input class="form-control" type="number" name="ph_num" id="ph_num" value="" placeholder="Eg:- 00331456785" required>
+                            <div class="invalid-feedback">Please, enter your Mobile Number</div>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label text-white" for="ap-address">Email Address <span class="text-danger">*</span></label>
-                            <input class="form-control" type="email" name="e_add" id="ap-address" value="" placeholder="Eg:- Suman@hotmail.com" required>
+                            <label class="form-label text-dark" for="ap-address">Email Address <span class="text-danger">*</span></label>
+                            <input class="form-control" type="email" name="e_add" id="e_add" value="" placeholder="Eg:- Suman@hotmail.com" required>
+                            <div class="invalid-feedback">Please, enter your Email Address</div>
                         </div>
                     </div>
 
                 </section>
 
                   <!-- Location-->
-                <section class="card card-body card-light  border-0 shadow-sm p-4 mb-4" id="location">
-                    <h2 class="h4 mb-4 text-white"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Other Details</h2>
+                <section class="card card-body card-dark  border-0 shadow-sm p-4 mb-4" id="location">
+                    <h2 class="h4 mb-4 text-dark"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Other Details</h2>
                 
                     <div class="row">
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label text-white" for="ap-address"> Pickup Date <span class="text-danger">*</span></label>
-                            <input class="form-control" type="date" name="p_date" id="txtDate"  required>
+                            <label class="form-label text-dark" for="ap-address"> Pickup Date <span class="text-danger">*</span></label>
+                            <input class="form-control" type="date" name="p_date" id="p_date"  required>
+                            <div class="invalid-feedback">Please, enter your Pickup Date</div>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label text-white" for="ap-address"> Pickup Time <span class="text-danger">*</span></label>
-                            <input class="form-control" type="time" name="p_time" id="ap-address"  required>
+                            <label class="form-label text-dark" for="ap-address"> Pickup Time <span class="text-danger">*</span></label>
+                            <input class="form-control" type="time" name="p_time" id="p_time"  required>
+                            <div class="invalid-feedback">Please, enter your Pickup Time</div>
                         </div>
                         <div class="col-sm-12 mb-3">
-                        <label class="form-label text-white" for="sc-description">Description </label>
-                        <textarea class="form-control" id="sc-description" name="des" rows="5" placeholder="Describe your vehicle"></textarea><span class="form-text text-light opacity-50">Write something</span>
+                        <label class="form-label text-dark" for="sc-description">Description </label>
+                        <textarea class="form-control" id="des" name="des" rows="5" placeholder="Describe your vehicle" required></textarea><span class="form-text text-light opacity-50">Write something</span>
+                        <div class="invalid-feedback">Please, enter your Description</div>
                         </div>
                     </div>
 
                 </section>
 
 
-                <button type="submit" value="Add" name="add" class="btn btn-primary btn-lg d-block mb-2">Book Now</button>
+                <button type="submit" value="submit" id="submit" name="submit" class="btn btn-primary btn-lg d-block mb-2">Book Now</button>
                 </form> 
+                <p id="show_message" style="display: none" class="text-dark">Booking Success <i class="fi-mail"></i> </p>
+
             </div>
          
         </div>
     </div>
 
+
+
     <?php
 
-if(isset($_POST['add'])){
+// if(isset($_POST['add'])){
 
-  if( $_POST['p_id'] == $_POST['dp_id']){
-      echo '<script>alert("Fail")</script>';
+   
+// }
 
-  }else{
-    if( $_POST['select_package'] == "pack1" || $_POST['select_package'] == "pack2" || $_POST['select_package'] == "pack3"){
-      echo "<script>alert(".$_POST['carpackage3'].")</script>";
-
-    }else{
-
-    }
-  }
-  
-    // if( $_POST['select_package'] == "pack1"){
-           
-    //           echo "<script>alert(".$_POST['carpackage1'].")</script>";
-
-              
-    // }elseif( $_POST['select_package'] == "pack2"){
-    //   echo '<script>alert("Welcome to Geeks for pack2")</script>';
-    // }else{
-    //   echo '<script>alert("Welcome to Geeks for pack3")</script>';
-    // }
-  // if(!empty($_POST['c_id'])&& 
-  // !empty($_POST['p_id'])&&
-  //  !empty($_POST['dc_id'])&& 
-  //  !empty($_POST['dp_id'])){
-
-  //   $c_id=$_POST['c_id'];
-  //   $p_id=$_POST['p_id'];
-  //   $dc_id=$_POST['dc_id'];
-  //   $dp_id=$_POST['dp_id'];
-  //   $pickup_address=$_POST['pickup_address'];
-  //   $drop_address=$_POST['drop_address'];
-  //   $select_package=$_POST['select_package'];
-  //   $cus_name=$_POST['cus_name'];
-  //   $ph_num=$_POST['ph_num'];
-  //   $e_add=$_POST['e_add'];
-  //   $p_date=$_POST['p_date'];
-  //   $p_time=$_POST['p_time'];
-  //   $des=$_POST['des'];
-
-
-
-
-}
 ?>
-<!--BLOCK#2 end YOUR CODE HERE -->
-<script>  
-
-
-// function showPlace(val) {
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("place").innerHTML = this.responseText;
-//         }
-//     };
-//     xmlhttp.open("POST", "controller/getPickPlace", true);
-//     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//     xmlhttp.send("city=" + val);
-// }
-
-
-// function showPickPlaceId(val) {
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("place_d").innerHTML = this.responseText;
-//         }
-//     };
-//     xmlhttp.open("POST", "controller/getDropPlaceId", true);
-//     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//     xmlhttp.send("p_P_id=" + val);
-// }
-// function showPlace_drop(val) {
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("place_d").innerHTML = this.responseText;
-//         }
-//     };
-//     xmlhttp.open("POST", "controller/getDropPlace", true);
-//     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//     xmlhttp.send("city_d=" + val);
-// }
-
-
-
-</script> 
-
-
-<script>   
-
-
-function showPlace(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("place").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getDropPlace", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("city=" + val);
-}
-function showPlace_drop(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("place_d").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getPickPlaceId", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("city_d=" + val);
-}
-function showPickPlaceId(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("place_d").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getDropPlaceId", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("p_P_id=" + val);
-}
-
-
-</script> 
-
-
-<script>   
-
-
-
-</script> 
 
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

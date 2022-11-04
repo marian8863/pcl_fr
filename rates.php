@@ -42,11 +42,6 @@ td:hover {
           <!-- Page title-->
           <div class="mb-lg-5 mx-auto text-center" style="max-width: 856px;">
             <h1 class="text-light mb-4 pb-3">BOOKING RATES</h1>
-            <!-- Search form-->
-            <!-- <form class="form-group form-group-lg form-group-light rounded-pill">
-              <input class="form-control" type="text" placeholder="What are you looking for?">
-              <button class="btn btn-lg btn-primary rounded-pill px-sm-4 px-3" type="submit"><i class="fi-search me-sm-2"></i><span class="d-sm-inline d-none">Search</span></button>
-            </form> -->
           </div>
         </div>
     </section>
@@ -92,9 +87,9 @@ td:hover {
                     <tr>
                         <th style="background-color:#dadad7;"> <?= $row["p_place"]?></th>
                         <th style="background-color:#dadad7;;"> <?= $row["d_place"]?></th>
-                        <td><a class="table_eff" href="">€ <?= $row["1_2P"]?></a> </td>
-                        <td><a href="">€ <?= $row["3P"]?></a> </td>
-                        <td><a href="">€ <?= $row["4P"]?></a> </td>
+                        <td><a class="table_eff" href="booking_form.php?get_amount=<?= $row["1_2P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=1_2P">€ <?= $row["1_2P"]?></a> </td>
+                        <td><a href="booking_form.php?get_amount=<?= $row["3P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=3P">€ <?= $row["3P"]?></a> </td>
+                        <td><a href="booking_form.php?get_amount=<?= $row["4P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=4P">€ <?= $row["4P"]?></a> </td>
                     </tr>
                     <?php }} ?>
                     </tbody>

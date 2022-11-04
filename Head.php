@@ -115,8 +115,9 @@ include_once("config1.php");
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
-    <script src="dist/sweetalert2.js"></script>
-  <link rel="stylesheet" href="dist/sweetalert2.css">
+    <!-- sweetalert -->
+    <script src="vendor/sweetalert/sweetalert2.js"></script>
+    <link rel="stylesheet" href="vendor/sweetalert/sweetalert2.css">
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
