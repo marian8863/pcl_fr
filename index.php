@@ -318,7 +318,7 @@ include_once("Menu.php");
                     <div class="pt-4 ps-sm-4 py-sm-4 p-lg-5 flex-shrink-0"><img class="d-block mx-auto" src="img/pricing/icon-1.png" width="86" alt="Icon"></div>
                     <div class="card-body text-center text-sm-start">
                     <h2 class="h5 mb-2">Friendly Drivers</h2>
-                    <p class="mb-sm-4">Our friendly and knowledgeable drivers will take care of you with the complete journey..</p><a class="fw-bold text-decoration-none py-1" href="mailto:pariscablimo@gamil.com"><i class="fi-mail fs-xs ms-2"></i> pariscablimo@gamil.com</a>
+                    <p class="mb-sm-4">Our friendly and knowledgeable drivers will take care of you with the complete journey..</p><a class="fw-bold text-decoration-none py-1" href="mailto:pariscablimo@gmail.com"><i class="fi-mail fs-xs ms-2"></i> pariscablimo@gmail.com</a>
                     </div>
                 </div>
                 </div>

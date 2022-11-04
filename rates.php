@@ -132,22 +132,7 @@ td:hover {
 
                         </tr>
                         <?php }} ?>
-                        </tbody>
-                    </table>
-                </div>
-                 
-
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="thead-dark">
-                        <tr style="background-color:#fd5631;color:white;">
-                            <th></th>
-                            <th>6 P.</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+                        <?php
                             $sql="select p2t.pa_name2,p2tr.6P from package_2_t6 p2t , package_2_t6_rate p2tr where p2t.pa_id2=p2tr.pa_id2";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result) > 0) {
@@ -158,6 +143,7 @@ td:hover {
                             <th style="background-color:#dadad7;"> <?= $row["pa_name2"]?> <br>
                             <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <strong>(150km)</strong> includes </span>
                             </th>
+                            <td></td>
                             <td><a class="table_data" href="">€ <?= $row["6P"]?></a> </td>
 
                         </tr>
@@ -165,6 +151,9 @@ td:hover {
                         </tbody>
                     </table>
                 </div>
+                 
+
+
 
               </div>
 
