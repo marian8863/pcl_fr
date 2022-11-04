@@ -105,7 +105,6 @@ td:hover {
               <div class="mb-md-5 mb-4 pb-lg-2" id="mvtPackage">
                 <h2 class="h4 mb-md-4">Multivan Volkswagen T6 Package</h2>
                 <!-- Resume creation and editing accordion-->       
-                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong></span> <br>
 
                 <div class="table-responsive">
                     <table class="table">
@@ -134,8 +133,8 @@ td:hover {
                         </tbody>
                     </table>
                 </div>
+                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong></span> <br>
 
-                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <br> <strong>(150km)</strong> includes </span> <br>
 
                 <div class="table-responsive">
                     <table class="table">
@@ -162,6 +161,8 @@ td:hover {
                         </tbody>
                     </table>
                 </div>
+                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <br> <strong>(150km)</strong> includes </span> <br>
+
               </div>
 
               <div class="mb-md-5 mb-4 pb-lg-2" id="Eclass">

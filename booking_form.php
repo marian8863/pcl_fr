@@ -130,7 +130,7 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
                   <div class="row">
                     <div class="col-sm-6 mb-3">
                         <label class="form-label text-dark" for="ap-type "> Pick Place <span class="text-danger">*</span></label>
-                        <select class="form-select" id="place_d" name="place_d"  redyonly>
+                        <select class="form-select" id="place_d" name="place_d"  disabled>
                           <option value="null" selected disabled >---- Select the Pick Place ---- </option>
                           <?php
                           $sql="SELECT * FROM `select_places`  group by p_place";
@@ -146,7 +146,7 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
                     </div> 
                     <div class="col-sm-6 mb-3">
                         <label class="form-label text-dark" for="ap-type "> Drop Place <span class="text-danger">*</span></label>
-                        <select class="form-select" id="d_place" name="d_place"  redyonly>
+                        <select class="form-select" id="d_place" name="d_place"  disabled>
                           <option value="null" selected disabled >---- Select the Pick Place ---- </option>
                           <?php
                           $sql="SELECT * FROM `select_places`  group by d_place";
@@ -163,12 +163,22 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
 
                     <div class=" col-sm-6 mb-3">
                           <label class="form-label text-dark" for="ap-address"> No Of Passenger <span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="<?= $gpa; ?>" readonly>
+                          <!-- <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="< gpa; ?>" readonly> -->
+                          <select class="form-select" id="nopassenger" name="nopassenger"  >
+                            <option value="1_2P">1-2P</option>
+                            <option value="3P">3P</option>
+                            <option value="4P">4P</option>
+                          </select>
                     </div>
 
                     <div class=" col-sm-6 mb-3">
                           <label class="form-label text-dark" for="ap-address">Amount<span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="amount"  id="amount" value="<?=  $gAmount; ?>" readonly>
+                          <!-- <input class="form-control" type="text" name="amount"  id="amount" value="<gAmount; ?>" readonly> -->
+                          <select class="form-select" id="nopassenger" name="nopassenger"  >
+                            <option value="1_2P">1-2P</option>
+                            <option value="3P">3P</option>
+                            <option value="4P">4P</option>
+                          </select>
                     </div>
 
                     <div class="col-sm-12 mb-3">
