@@ -124,7 +124,9 @@ td:hover {
                             while($row = mysqli_fetch_assoc($result)) { 
                             ?>
                         <tr>
-                            <th style="background-color:#dadad7;"> <?= $row["pa_name"]?></th>
+                            <th style="background-color:#dadad7;"> <?= $row["pa_name"]?><br>
+                            <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong></span>
+                            </th>
                             <td><a class="table_data" href="">€ <?= $row["1_4P"]?></a> </td>
                             <td><a class="table_data" href="">€ <?= $row["4_6P"]?></a> </td>
 
@@ -133,7 +135,7 @@ td:hover {
                         </tbody>
                     </table>
                 </div>
-                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong></span> <br>
+                 
 
 
                 <div class="table-responsive">
@@ -153,7 +155,9 @@ td:hover {
                             while($row = mysqli_fetch_assoc($result)) { 
                             ?>
                         <tr>
-                            <th style="background-color:#dadad7;"> <?= $row["pa_name2"]?></th>
+                            <th style="background-color:#dadad7;"> <?= $row["pa_name2"]?> <br>
+                            <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <strong>(150km)</strong> includes </span>
+                            </th>
                             <td><a class="table_data" href="">€ <?= $row["6P"]?></a> </td>
 
                         </tr>
@@ -161,7 +165,6 @@ td:hover {
                         </tbody>
                     </table>
                 </div>
-                <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <br> <strong>(150km)</strong> includes </span> <br>
 
               </div>
 
