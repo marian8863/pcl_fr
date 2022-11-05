@@ -114,6 +114,7 @@
           </div>
         </div>
     </div>
+      <!-- booking now-->
 
       <div class="modal fade" id="booking-modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered p-2 my-0 mx-auto">
@@ -137,7 +138,7 @@
                       <h4 class="h5 mb-2">Contacts:</h4>
                       <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start" href="https://api.whatsapp.com/send?phone=33660763235&text=&source=&data=&app_absent=" target="_blank"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>+33 660 763 235</a></li>
-                        <li class="nav-item"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="mailto:pariscablimo@gamil.com"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>pariscablimo@gamil.com</a></li>
+                        <li class="nav-item"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="mailto:pariscablimo@gmail.com"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>pariscablimo@gmail.com</a></li>
                         <!-- <li class="nav-item"><a class="nav-link p-0  fw-normal d-flex align-items-start" href="rates.php"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>Book on Application</a></li> -->
                       </ul>
                     </div>

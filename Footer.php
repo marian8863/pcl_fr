@@ -67,7 +67,7 @@
             </ul>
           </div>
           <div class="col-xl-3 col-lg-3 col-sm-6 col-md-3 mb-2 mb-sm-4"><a class="d-flex align-items-center text-decoration-none mb-2"  href="tel:+33 660 763 235"><i class="fi-device-mobile me-2" style="color:white"></i><span class="text-light"> +33 660 763 235</span></a>
-            <a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:pariscablimo@gamil.com"><i class="fi-mail me-2" style="color:white"></i><span class="text-light">pariscablimo@gamil.com</span></a>
+            <a class="d-flex align-items-center text-decoration-none mb-2" href="mailto:pariscablimo@gmail.com"><i class="fi-mail me-2" style="color:white"></i><span class="text-light">pariscablimo@gmail.com</span></a>
             <hr width="190">
             <div class="d-flex flex-wrap pt-4"><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-twitter"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="#"><i class="fi-telegram"></i></a><a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="#"><i class="fi-messenger"></i></a></div>
           </div>

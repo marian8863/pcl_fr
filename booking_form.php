@@ -163,22 +163,30 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
 
                     <div class=" col-sm-6 mb-3">
                           <label class="form-label text-dark" for="ap-address"> No Of Passenger <span class="text-danger">*</span></label>
-                          <!-- <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="< gpa; ?>" readonly> -->
-                          <select class="form-select" id="nopassenger" name="nopassenger"  >
-                            <option value="1_2P">1-2P</option>
-                            <option value="3P">3P</option>
-                            <option value="4P">4P</option>
-                          </select>
+                          <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="<?= $gpa; ?>" readonly>
+                          <!-- <select class="form-select" id="nopassenger" name="nopassenger"  >
+                          <option value="null" selected disabled >---- Select the Passenger ---- </option>
+                          <
+                          $sql="select * from `passenger`";
+                          $result = mysqli_query($con,$sql);
+                          if (mysqli_num_rows($result) > 0 ) {
+                          while($row=mysqli_fetch_assoc($result)){
+                              echo '<option  value="'.$row["p_num"].'" required';
+                              if($row["p_num"]== $gpa) echo ' selected';
+                              echo '>'.$row["p_num"].'</option>';
+                          }}   
+                          ?>
+                          </select> -->
                     </div>
 
                     <div class=" col-sm-6 mb-3">
                           <label class="form-label text-dark" for="ap-address">Amount<span class="text-danger">*</span></label>
-                          <!-- <input class="form-control" type="text" name="amount"  id="amount" value="<gAmount; ?>" readonly> -->
-                          <select class="form-select" id="nopassenger" name="nopassenger"  >
+                          <input class="form-control" type="text" name="amount"  id="amount" value="<?= $gAmount; ?>" readonly>
+                          <!-- <select class="form-select" id="nopassenger" name="nopassenger"  >
                             <option value="1_2P">1-2P</option>
                             <option value="3P">3P</option>
                             <option value="4P">4P</option>
-                          </select>
+                          </select> -->
                     </div>
 
                     <div class="col-sm-12 mb-3">

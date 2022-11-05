@@ -143,7 +143,7 @@ td:hover {
                             <th style="background-color:#dadad7;"> <?= $row["pa_name2"]?> <br>
                             <span class="d-block opacity-70 mb-2 mb-sm-0">Extra <strong> Hours € 65.00</strong> <strong>(150km)</strong> includes </span>
                             </th>
-                            <td></td>
+                            <td>-</td>
                             <td><a class="table_data" href="">€ <?= $row["6P"]?></a> </td>
 
                         </tr>

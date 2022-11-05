@@ -25,7 +25,7 @@ include_once("Menu.php");
             <div class="d-flex align-items-start mb-4 pb-md-3"><img class="me-3 flex-shrink-0" src="img/contact/envelope.svg" width="32" alt="Envelope icon">
               <div>
                 <h3 class="h6 mb-2 pb-1 text-dark">General communication</h3>
-                <p class="mb-0 text-dark"><span class="opacity-70">For general queries, including partnership opportunities, please email</span><a class="ms-1 text-nowrap" href="mailto:pariscablimo@gamil.com">pariscablimo@gamil.com</a></p>
+                <p class="mb-0 text-dark"><span class="opacity-70">For general queries, including partnership opportunities, please email</span><a class="ms-1 text-nowrap" href="mailto:pariscablimo@gmail.com">pariscablimo@gmail.com</a></p>
               </div>
             </div>
             <div class="d-flex align-items-start mb-4 pb-md-3"><img class="me-3 flex-shrink-0" src="img/contact/chat.svg" width="32" alt="Chat icon">
