@@ -298,6 +298,62 @@ include_once("Menu.php");
                   <h3 class="mb-0 fs-base text-nav">Lourdes</h3>
                 </div></a>
             </div>
+            <!-- Item-->
+            <div class="col-md-3 mb-4 "><a class="card shadow-sm card-hover border-0" href="">
+                <div class="card-img-top card-img-hover"><span class="img-overlay opacity-65"></span><img src="img/city/Out_of_paris/Château-de-Chambord.png" alt="Lourdes">
+                  <!-- <div class="content-overlay start-0 top-0 d-flex align-items-center justify-content-center w-100 h-100 p-3">
+                    <div class="w-100 p-1">
+                      <div class="mb-2">
+                        <h4 class="mb-2 fs-xs fw-normal text-light"><i class="fi-wallet mt-n1 me-2 fs-sm align-middle"></i>Property for sale</h4>
+                        <div class="d-flex align-items-center">
+                          <div class="progress progress-light w-100">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div><span class="text-light fs-sm ps-1 ms-2">2567</span>
+                        </div>
+                      </div>
+                      <div class="pt-1">
+                        <h4 class="mb-2 fs-xs fw-normal text-light"><i class="fi-home mt-n1 me-2 fs-sm align-middle"></i>Property for rent</h4>
+                        <div class="d-flex align-items-center">
+                          <div class="progress progress-light w-100">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div><span class="text-light fs-sm ps-1 ms-2">1204</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+                <div class="card-body text-center">
+                  <h3 class="mb-0 fs-base text-nav">Château de Chambord</h3>
+                </div></a>
+            </div>
+                        <!-- Item-->
+                        <div class="col-md-3 mb-4 "><a class="card shadow-sm card-hover border-0" href="">
+                <div class="card-img-top card-img-hover"><span class="img-overlay opacity-65"></span><img src="img/city/Out_of_paris/viaduc-de-millau.png" alt="Lourdes">
+                  <!-- <div class="content-overlay start-0 top-0 d-flex align-items-center justify-content-center w-100 h-100 p-3">
+                    <div class="w-100 p-1">
+                      <div class="mb-2">
+                        <h4 class="mb-2 fs-xs fw-normal text-light"><i class="fi-wallet mt-n1 me-2 fs-sm align-middle"></i>Property for sale</h4>
+                        <div class="d-flex align-items-center">
+                          <div class="progress progress-light w-100">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div><span class="text-light fs-sm ps-1 ms-2">2567</span>
+                        </div>
+                      </div>
+                      <div class="pt-1">
+                        <h4 class="mb-2 fs-xs fw-normal text-light"><i class="fi-home mt-n1 me-2 fs-sm align-middle"></i>Property for rent</h4>
+                        <div class="d-flex align-items-center">
+                          <div class="progress progress-light w-100">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div><span class="text-light fs-sm ps-1 ms-2">1204</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+                <div class="card-body text-center">
+                  <h3 class="mb-0 fs-base text-nav">viaduc de millau</h3>
+                </div></a>
+            </div>
 
           </div>
     </section>

@@ -2,7 +2,7 @@
     include_once("config1.php");
     if(!empty($_POST['place_d'])&& 
     !empty($_POST['d_place'])&&
-     !empty($_POST['nopassenger'])&& 
+     !empty($_POST['passen_id'])&& 
      !empty($_POST['amount'])&& 
      !empty($_POST['adr'])&& 
      !empty($_POST['cus_name'])&& 
@@ -13,7 +13,7 @@
      !empty($_POST['des'])){
         $place_d=$_POST['place_d'];
         $d_place=$_POST['d_place'];
-        $nopassenger=$_POST['nopassenger'];
+        $passen_id=$_POST['passen_id'];
         $amount=$_POST['amount'];
         $adr=$_POST['adr'];
         $cus_name=$_POST['cus_name'];
@@ -24,7 +24,7 @@
         $des=$_POST['des'];
       
         $sql="INSERT INTO `booking_details` (`place_d`,`d_place`,`nopassenger`,`amount`,`adr`,`cus_name`,`ph_num`,`e_add`,`p_date`,`p_time`,`des`) 
-        values('$place_d','$d_place','$nopassenger','$amount','$adr','$cus_name','$ph_num','$e_add','$p_date','$p_time','$des')";
+        values('$place_d','$d_place','$passen_id','$amount','$adr','$cus_name','$ph_num','$e_add','$p_date','$p_time','$des')";
         if(mysqli_query($con,$sql)){
             // $message ="<h4 class='text-success' >New record created successfully</h4>";
             // echo "$message";

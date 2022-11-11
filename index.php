@@ -546,7 +546,7 @@ include_once("Menu.php");
               <div class="mx-auto py-md-4 text-center" style="max-width: 605px;">
               <h2 class="text-black">Stay informed</h2>
               <p class="mb-4 pb-2 fs-lg">Subscribe to our PCL Cabs</p>
-              <p id="show_message" style="display: none" class="text-dark">Thanks For Subscriber <i class="fi-like"></i> </p>
+              <p id="show_message_subscribe" style="display: none" class="text-dark">Thanks For Subscriber <i class="fi-like"></i> </p>
               <form class="form-group rounded-pill mb-3" action="javascript:void(0)" method="post" id="ajax-form">
                   <div class="input-group input-group-lg"><span class="input-group-text text-muted"><i class="fi-mail"></i></span>
                   <input class="form-control" type="email" placeholder="Your email" name="email" id="email" required>

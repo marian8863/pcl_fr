@@ -88,13 +88,13 @@ td:hover {
                         <th style="background-color:#dadad7;"> <?= $row["p_place"]?></th>
                         <th style="background-color:#dadad7;;"> <?= $row["d_place"]?></th>
                         <td><a class="table_eff" href="booking_form.php?get_amount=<?= $row["1_2P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=1_2P">€ <?= $row["1_2P"]?> 
-                        <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4>
+                        <!-- <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4> -->
                         </a> </td>
                         <td><a href="booking_form.php?get_amount=<?= $row["3P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=3P">€ <?= $row["3P"]?>
-                        <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4>
+                        <!-- <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4> -->
                         </a> </td>
                         <td><a href="booking_form.php?get_amount=<?= $row["4P"]?>&&get_p_place=<?= $row["p_place"]?>&&get_d_place=<?= $row["d_place"]?>&&get_pa=4P">€ <?= $row["4P"]?>
-                        <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4>
+                        <!-- <br><h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">BOOK</h4> -->
                         </a> </td>
                     </tr>
                     <?php }} ?>

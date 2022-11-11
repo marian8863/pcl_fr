@@ -37,13 +37,13 @@ include_once("Menu.php");
             <div class="d-flex align-items-start mb-4 pb-md-3"><img class="me-3 flex-shrink-0" src="img/contact/map-pin.svg" width="32" alt="Map pin icon">
               <div>
                 <h3 class="h6 mb-2 pb-1 text-dark">Our headquarters</h3>
-                <p class="mb-0 text-dark"><span class="opacity-70"> Avenue Albert Sarraut 95190</span><a class="ms-1 text-nowrap" href="#map-location" data-scroll>Goussainville</a></p>
+                <p class="mb-0 text-dark"><span class="opacity-70">44 Avenue Albert Sarraut 95190</span><a class="ms-1 text-nowrap" href="#map-location" data-scroll>Goussainville</a><br><span class="opacity-70">France</span></p>
               </div>
             </div>
           </div>
           <div class="col-md-6 offset-lg-2">
             <!-- Contact form-->
-            <p id="show_message" style="display: none" class="text-dark">Thanks For Message,waiting for Reply.. <i class="fi-mail"></i> </p>
+            <p id="show_message_contact" style="display: none" class="text-dark">Thanks For Message,waiting for Reply.. <i class="fi-mail"></i> </p>
             <form class="needs-validation" novalidate action="javascript:void(0)" method="post" id="contact-form">
               <div class="mb-4">
                 <label class="form-label text-dark" for="c_name">Full Name</label>

@@ -123,13 +123,13 @@
               <button class="btn-close btn-close-black position-absolute top-0 end-0 mt-3 me-3" type="button" data-bs-dismiss="modal"></button>
                 
                     <!-- Place info-->
-                    <div class="d-flex align-items-start mb-3 pb-2 border-bottom"><img src="img/logo/logo-dark.png" width="100" alt="Thumbnail">
+                    <div class="d-flex align-items-start mb-3 pb-2 border-bottom"><img src="img/logo/logo-dark1.png" width="100" alt="Thumbnail">
                       <div class="ps-2 ms-1">
                         <h3 class="h5 mb-2"> Paris cablimouine</h3>
                         <ul class="list-unstyled d-flex flex-wrap fs-sm">
                           <li class="me-2 mb-1 pe-1"><i class="fi-star-filled mt-n1 me-1 text-warning align-middle opacity-70"></i><b>4.9 </b>(48)</li>
                           <li class="me-2 mb-1 pe-1"><i class="fi-wallet mt-n1 me-1 align-middle opacity-70"></i>$$</li>
-                          <li class="me-2 mb-1 pe-1"><i class="fi-map-pin mt-n1 me-1 align-middle opacity-70"></i>Avenue Albert Sarraut 95190 Goussainville</li>
+                          <li class="me-2 mb-1 pe-1"><i class="fi-map-pin mt-n1 me-1 align-middle opacity-70"></i>44 Avenue Albert Sarraut 95190 Goussainville France</li>
                         </ul>
                       </div>
                     </div>
@@ -138,8 +138,8 @@
                       <h4 class="h5 mb-2">Contacts:</h4>
                       <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start" href="https://api.whatsapp.com/send?phone=33660763235&text=&source=&data=&app_absent=" target="_blank"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>+33 660 763 235</a></li>
-                        <li class="nav-item"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="mailto:pariscablimo@gmail.com"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>pariscablimo@gmail.com</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link p-0  fw-normal d-flex align-items-start" href="rates.php"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>Book on Application</a></li> -->
+                        <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="mailto:pariscablimo@gmail.com"><i class="fi-mail mt-1 me-2 align-middle opacity-70"></i>pariscablimo@gmail.com</a></li>
+                        <li class="nav-item"><a class="nav-link p-0  fw-normal d-flex align-items-start" href="booking_form.php"><i class="fi-pencil mt-1 me-2 align-middle opacity-70"></i>Book on Application</a></li>
                       </ul>
                     </div>
                     <!-- Place pricing
@@ -162,7 +162,7 @@
       </div>
             <!-- Navbar-->
     <header class="navbar navbar-expand-lg bg-dark fixed-top" data-scroll-header>
-        <div class="container"><a class="navbar-brand me-3 me-xl-4" href="https://pariscablimousine.fr/"><img class="d-block" src="img/logo/logo-light.png" width="116" alt="PCI"></a>
+        <div class="container"><a class="navbar-brand me-3 me-xl-4" href="https://pariscablimousine.fr/"><img class="d-block" src="img/logo/logo-light1.png" width="116" alt="PCI"></a>
           <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ><span class="fi-align-justify" style="color:white"></span></button><a class="btn btn-link btn-light btn-sm d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Sign in</a><a class="btn btn-primary btn-sm ms-2 order-lg-3" href="#booking-modal" data-bs-toggle="modal"><i class="fi-plus me-2"></i>Book Now</a>
           <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
             <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">

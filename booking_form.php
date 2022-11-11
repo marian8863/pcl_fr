@@ -5,16 +5,15 @@ $title = "Home | Booking Details";
 include_once("Head.php");
 include_once("Menu.php");
 
-$gAmount=$pp=$dp=$gpa=$p_place=null;
-if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_place'])&&isset($_GET['get_pa'])){
-    $gAmount=$_GET['get_amount'];
+$amo=$pp=$dp=$gpa=null;
+if(isset($_GET['get_p_place'])&&isset($_GET['get_d_place'])&&isset($_GET['get_pa'])&&isset($_GET['get_amount'])){
     $pp=$_GET['get_p_place'];
     $dp=$_GET['get_d_place'];
     $gpa=$_GET['get_pa'];
-
-
+    $amo=$_GET['get_amount'];
 }
 ?>
+
 <!--END DON'T CHANGE THE ORDER-->
 
     <div class="modal fade" id="preview-modal" tabindex="-1">
@@ -130,64 +129,43 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
                   <div class="row">
                     <div class="col-sm-6 mb-3">
                         <label class="form-label text-dark" for="ap-type "> Pick Place <span class="text-danger">*</span></label>
-                        <select class="form-select" id="place_d" name="place_d"  disabled>
+                        <select class="form-select" id="place_d" name="place_d" onchange="showPlace(this.value)" >
                           <option value="null" selected disabled >---- Select the Pick Place ---- </option>
                           <?php
-                          $sql="SELECT * FROM `select_places`  group by p_place";
+                          $sql="select p_id from places_packages group by p_id";
                           $result = mysqli_query($con,$sql);
                           if (mysqli_num_rows($result) > 0 ) {
                           while($row=mysqli_fetch_assoc($result)){
-                              echo '<option  value="'.$row["p_place"].'" required';
-                              if($row["p_place"]== $pp) echo ' selected';
-                              echo '>'.$row["p_place"].'</option>';
-                          }}   
+                              echo '<option  value="'.$row["p_id"].'" required';
+                              if($row["p_id"]== $pp) echo ' selected';
+                              echo '>'.$row["p_id"].'</option>';
+                          }}
                           ?>
                         </select>
                     </div> 
+
                     <div class="col-sm-6 mb-3">
                         <label class="form-label text-dark" for="ap-type "> Drop Place <span class="text-danger">*</span></label>
-                        <select class="form-select" id="d_place" name="d_place"  disabled>
-                          <option value="null" selected disabled >---- Select the Pick Place ---- </option>
-                          <?php
-                          $sql="SELECT * FROM `select_places`  group by d_place";
-                          $result = mysqli_query($con,$sql);
-                          if (mysqli_num_rows($result) > 0 ) {
-                          while($row=mysqli_fetch_assoc($result)){
-                              echo '<option  value="'.$row["d_place"].'" required';
-                              if($row["d_place"]== $dp) echo ' selected';
-                              echo '>'.$row["d_place"].'</option>';
-                          }}   
-                          ?>
+                        <select class="form-select" id="d_place" name="d_place" onchange="showPassenger(this.value)" required>
+
                         </select>
                     </div> 
 
-                    <div class=" col-sm-6 mb-3">
-                          <label class="form-label text-dark" for="ap-address"> No Of Passenger <span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="nopassenger" id="nopassenger" value="<?= $gpa; ?>" readonly>
-                          <!-- <select class="form-select" id="nopassenger" name="nopassenger"  >
-                          <option value="null" selected disabled >---- Select the Passenger ---- </option>
-                          <
-                          $sql="select * from `passenger`";
-                          $result = mysqli_query($con,$sql);
-                          if (mysqli_num_rows($result) > 0 ) {
-                          while($row=mysqli_fetch_assoc($result)){
-                              echo '<option  value="'.$row["p_num"].'" required';
-                              if($row["p_num"]== $gpa) echo ' selected';
-                              echo '>'.$row["p_num"].'</option>';
-                          }}   
-                          ?>
-                          </select> -->
-                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label class="form-label text-dark" for="ap-type "> No Of Passenger <span class="text-danger">*</span></label>
+                        <select class="form-select" id="passen_id" name="passen_id"  onchange="showAmount(this.value)">
 
-                    <div class=" col-sm-6 mb-3">
-                          <label class="form-label text-dark" for="ap-address">Amount<span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" name="amount"  id="amount" value="<?= $gAmount; ?>" readonly>
-                          <!-- <select class="form-select" id="nopassenger" name="nopassenger"  >
-                            <option value="1_2P">1-2P</option>
-                            <option value="3P">3P</option>
-                            <option value="4P">4P</option>
-                          </select> -->
-                    </div>
+                        </select>
+                    </div> 
+
+                    <div class="col-sm-6 mb-3">
+                        <label class="form-label text-dark" for="ap-type "> Rates <span class="text-danger">*</span></label>
+                        <div id="amount" name="amount">
+<?php     echo '---- Select the Passenger to show Rates ---- ';?>
+
+                        </div>
+                       
+                    </div> 
 
                     <div class="col-sm-12 mb-3">
                       <label class="form-label text-dark" for="sc-description">Pick Address <span class="text-danger">*</span></label>
@@ -250,24 +228,12 @@ if(isset($_GET['get_amount']) &&isset($_GET['get_p_place'])&&isset($_GET['get_d_
 
                 <button type="submit" value="submit" id="submit" name="submit" class="btn btn-primary btn-lg d-block mb-2">Book Now</button>
                 </form> 
-                <p id="show_message" style="display: none" class="text-dark">Booking Success <i class="fi-mail"></i> </p>
+                <p id="show_message_booking_form" style="display: none" class="text-dark">Booking Success.. Our Driver Contact to you. <i class="fi-mail"></i> </p>
 
             </div>
          
         </div>
     </div>
-
-
-
-    <?php
-
-// if(isset($_POST['add'])){
-
-   
-// }
-
-?>
-
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("Footer.php"); ?>

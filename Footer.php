@@ -3,7 +3,7 @@
     <!-- Footer-->
     <footer class="footer bg-dark">
       <div class="border-bottom border-light py-1">
-        <div class="container d-sm-flex align-items-center justify-content-between"><marquee behavior="scroll" direction="right"><a class="" href="http://dev.pariscablimouine.com/"><img class="d-block" src="img/logo/logo-light.png" width="116" alt="PCI"></a></marquee>
+        <div class="container d-sm-flex align-items-center justify-content-between"><marquee behavior="scroll" direction="right"><a class="" href="http://dev.pariscablimouine.com/"><img class="d-block" src="img/logo/logo-footer-light1.png" width="116" alt="PCI"></a></marquee>
           <!-- <div class="d-flex pt-3 pt-sm-0">
             <div class="dropdown ms-n3">
               <button class="btn btn-light btn-link btn-sm dropdown-toggle fw-normal py-2" type="button" data-bs-toggle="dropdown"><i class="fi-globe me-2"></i>Eng</button>
@@ -43,7 +43,7 @@
           <div class="col-lg-3 pb-2 mb-4">
             <h3 class="h5 text-light mb-2">Subscribe to our PCL Cabs</h3>
             <!-- <p class="fs-sm text-light opacity-70">Don’t miss any relevant offers!</p> -->
-            <p id="show_message" style="display: none" class="text-light">Thanks For Subscriber <i class="fi-like"></i> </p>
+            <p id="show_message_subscribe" style="display: none" class="text-light">Thanks For Subscriber <i class="fi-like"></i> </p>
             <form class="form-group form-group-light w-100"  action="javascript:void(0)" method="post" id="ajax-form">
               <div class="input-group input-group-sm"><span class="input-group-text"> <i class="fi-mail"></i></span>
                 <input class="form-control form_data" type="text" placeholder="Your email" name="email" id="email" required>
@@ -181,7 +181,7 @@
 $(document).ready(function($){
 // hide messages 
 $("#error").hide();
-$("#show_message").hide();
+$("#show_message_subscribe").hide();
 // on submit...
 $('#ajax-form').submit(function(e){
 e.preventDefault();
@@ -201,7 +201,7 @@ type:"POST",
 url: "Subscribe_process_data",
 data: $(this).serialize(), // get all form field value in serialize form
 success: function(){
-$("#show_message").fadeIn();
+$("#show_message_subscribe").fadeIn();
 //$("#ajax-form").fadeOut();
 }
 });
@@ -215,7 +215,7 @@ return false;
 $(document).ready(function($){
 // hide messages 
 $("#error").hide();
-$("#show_message").hide();
+$("#show_message_contact").hide();
 // on submit...
 $('#contact-form').submit(function(e){
 e.preventDefault();
@@ -251,7 +251,7 @@ type:"POST",
 url: "contact_process_data",
 data: $(this).serialize(), // get all form field value in serialize form
 success: function(){
-$("#show_message").fadeIn();
+$("#show_message_contact").fadeIn();
 //$("#ajax-form").fadeOut();
 }
 });
@@ -265,7 +265,7 @@ return false;
 $(document).ready(function($){
 // hide messages 
 $("#error").hide();
-$("#show_message").hide();
+$("#show_message_booking_form").hide();
 // on submit...
 $('#booking-form').submit(function(e){
 e.preventDefault();
@@ -288,10 +288,10 @@ return false;
 }
 
 // No Of Passenger required
-var nopassenger = $("input#nopassenger").val();
-if(nopassenger == ""){
+var passen_id = $("input#passen_id").val();
+if(passen_id == ""){
 $("#error").fadeIn().text("No Of Passenger required");
-$("input#nopassenger").focus();
+$("input#passen_id").focus();
 return false;
 }
 
@@ -364,7 +364,7 @@ type:"POST",
 url: "booking_process_data",
 data: $(this).serialize(), // get all form field value in serialize form
 success: function(){
-$("#show_message").fadeIn();
+$("#show_message_booking_form").fadeIn();
 // $("#ajax-form").fadeOut();
 }
 });
@@ -372,6 +372,75 @@ $("#show_message").fadeIn();
 return false;
 });
 </script>
+
+
+
+<script>
+
+<?php
+if(isset($_GET['get_p_place'])&&isset($_GET['get_d_place'])&&isset($_GET['get_pa'])&&isset($_GET['get_amount'])){
+?>
+
+    showPlace(<?php echo '\''.$pp.'\'';?>);
+    document.getElementById("d_place").value ="<?php echo $dp;?>";
+<?php
+}
+?>
+
+  function showPlace(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("d_place").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getPlace", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("place=" + val);
+}
+
+function showPassenger(val,val_id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("passen_id").innerHTML = this.responseText;
+
+        }
+    };
+    val_id = document.getElementById("place_d").value;
+
+    xmlhttp.open("POST", "controller/getPassenger", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("d_place=" + val + "&place2_id=" + val_id);
+
+
+    // d_id = document.getElementById("place_d").innerHTML = xhttp.responseText;
+    // xmlhttp.send("place=" + d_id);
+
+    // alert(d_id);
+
+}
+
+function showAmount(val,val_id1,val_id2) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("amount").innerHTML = this.responseText;
+        }
+    };
+    
+    val_id1 = document.getElementById("place_d").value;
+    val_id2 = document.getElementById("d_place").value;
+
+    xmlhttp.open("POST", "controller/getAmount", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("passen_id=" + val + "&place1_id=" + val_id1 + "&place2_id=" + val_id2);
+
+      //  alert(val);
+}
+</script>
+
+
  
 </body>
 

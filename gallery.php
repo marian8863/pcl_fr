@@ -105,6 +105,13 @@ include_once("Menu.php");
             </div>
             <div class="col-8"><a class="gallery-item rounded rounded-md-3" href="img/gallery/37.jpeg" data-sub-html=""><img src="img/gallery/37.jpeg" alt="Gallery thumbnail"></a></div>
             <div class="col-4"><a class="gallery-item rounded rounded-md-3 mb-2 mb-md-3" href="img/gallery/38.jpeg" data-sub-html=""><img src="img/gallery/38.jpeg" alt="Gallery thumbnail"></a><a class="gallery-item rounded rounded-md-3" href="img/gallery/39.jpeg" data-sub-html=""><img src="img/gallery/39.jpeg" alt="Gallery thumbnail"></a></div>
+            <div class="col-12">
+                <div class="row g-2 g-md-3">
+                <div class="col"><a class="gallery-item rounded-1 rounded-md-2" href="img/gallery/40.jpeg" data-sub-html=""><img src="img/gallery/40.jpeg" alt="Gallery thumbnail"></a></div>
+                <div class="col"><a class="gallery-item rounded-1 rounded-md-2" href="img/gallery/41.jpeg" data-sub-html=""><img src="img/gallery/41.jpeg" alt="Gallery thumbnail"></a></div>
+                <div class="col"><a class="gallery-item rounded-1 rounded-md-2" href="img/gallery/42.jpeg" data-sub-html=""><img src="img/gallery/42.jpeg" alt="Gallery thumbnail"></a></div>
+                </div>
+            </div>
         </div>
     </section>
 
