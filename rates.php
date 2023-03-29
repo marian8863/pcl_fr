@@ -158,7 +158,7 @@ td:hover {
               </div>
 
               <div class="mb-md-5 mb-4 pb-lg-2" id="Eclass">
-                <h2 class="h4 mb-md-4">E class</h2>
+                <h2 class="h4 mb-md-4">E class or Tesla Y </h2>
                 <!-- E class -->
                 <div class="table-responsive">
                     <table class="table">
@@ -189,7 +189,7 @@ td:hover {
               </div>
 
               <div class="mb-md-5 mb-4 pb-lg-2" id="EclassPackage">
-                <h2 class="h4 mb-md-4">E class Package</h2>
+                <h2 class="h4 mb-md-4">E class or Tesla Y Packages</h2>
                 <!-- Job application accordion-->
                 <div class="table-responsive">
                     <table class="table">

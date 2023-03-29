@@ -340,10 +340,10 @@ include_once("Menu.php");
                   <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
                 </div>
                 <div class="tns-carousel-inner">
-                    <img src="img/our_cars/mv/mv02.png" alt="Image">
-                    <img src="img/our_cars/mv/mv001.png" alt="Image">
-                    <img src="img/our_cars/mv/mv03.png" alt="Image">
-                    <img src="img/our_cars/mv/mv04.png" alt="Image">
+                    <img src="img/our_cars/mv/mv0001.png" alt="Image">
+                    <img src="img/our_cars/mv/mv0002.png" alt="Image">
+                    <img src="img/our_cars/mv/mv0003.png" alt="Image">
+                    <img src="img/our_cars/mv/mv0004.png" alt="Image">
                 </div>
               </div>
               <div class="card-body">
@@ -353,7 +353,7 @@ include_once("Menu.php");
                     <label class="form-check-label fs-sm" for="compare1">Booking</label>
                   </div>
                 </div>
-                <h3 class="h6 mb-1"><span class="nav-link-dark" >Multivan Volkswagen T6</span></h3>
+                <h3 class="h6 mb-1"><span class="nav-link-dark" >MERCEDES-BENZ Classe V</span></h3>
                 <!-- <div class="text-primary fw-bold mb-1">7 Seats</div>
                 <div class="fs-sm text-light opacity-70"><i class="fi-briefcase me-1 "></i>7 Max (luggage)</div> -->
               </div>
